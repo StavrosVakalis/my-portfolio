@@ -6,7 +6,6 @@ import { useTheme } from "next-themes";
 
 // Data
 import yourData from "../data/portfolio.json";
-import Cursor from "../components/Cursor";
 
 const Edit = () => {
   // states
@@ -47,7 +46,7 @@ const Edit = () => {
           imageSrc:
             "https://images.unsplash.com/photo-1517479149777-5f3b1511d5ad?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTAyfHxwYXN0ZWx8ZW58MHx8MHw%3D&auto=format&fit=crop&w=400&q=60",
 
-          url: "http://chetanverma.com/",
+          url: "",
         },
       ],
     });
@@ -104,7 +103,7 @@ const Edit = () => {
         {
           id: uuidv4(),
           title: "New Link",
-          link: "www.chetanverma.com",
+          link: "",
         },
       ],
     });
@@ -149,12 +148,10 @@ const Edit = () => {
   return (
     <div className="container mx-auto">
       <Header></Header>
-      <Cursor />
       <div className="mt-10">
         <div
-          className={`z-10 sticky top-12 ${
-            theme === "dark" ? "bg-transparent" : "bg-white"
-          }`}
+          className={`z-10 top-12 ${theme === "dark" ? "bg-transparent" : "bg-white"
+            }`}
         >
           <div className="flex items-center justify-between">
             <h1 className="text-4xl">Dashboard</h1>
@@ -201,6 +198,12 @@ const Edit = () => {
               type={currentTabs === "RESUME" && "primary"}
             >
               Resume
+            </Button>
+            <Button
+              onClick={() => setCurrentTabs("CONTACT")}
+              type={currentTabs === "CONTACT" && "primary"}
+            >
+              Contact
             </Button>
           </div>
         </div>
@@ -888,6 +891,25 @@ const Edit = () => {
             </div>
           </div>
         )}
+        {
+          currentTabs === "CONTACT" && (
+            <div className="mt-10">
+              <div className="mt-5 flex items-center">
+                <label className="w-1/5 text-sx opacity-50">Contact Email</label>
+                <input
+                  value={data.contact.email}
+                  onChange={(e) =>
+                    setData({
+                      ...data,
+                      contact: { ...data.contact, email: e.target.value },
+                    })
+                  }
+                  className="w-1/5 ml-10 p-2 rounded-md shadow-lg border-2"
+                  type="text"
+                ></input>
+              </div>
+            </div>)
+        }
       </div>
     </div>
   );

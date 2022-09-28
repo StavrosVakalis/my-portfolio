@@ -9,7 +9,7 @@
 }
 
 html{
-  @apply cursor-none
+  @apply cursor-default
 }
 
 body {
