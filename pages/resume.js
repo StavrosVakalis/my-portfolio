@@ -35,7 +35,7 @@ const Resume = () => {
         {mount && (
           <div className="mt-10 w-full flex flex-col items-center">
             <div
-              className={`w-full ${mount && theme.theme === "dark" ? "bg-gray-500" : "bg-gray-100"
+              className={`w-full ${mount && theme.theme === "dark" ? "bg-gray-900" : "bg-gray-100"
                 } max-w-4xl p-20 mob:p-5 desktop:p-20 rounded-lg shadow-sm`}
             >
               <h1 className="text-3xl font-bold">{name}</h1>
