@@ -3,6 +3,8 @@ import { useTheme } from "next-themes";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import Button from "../Button";
+import Brightness7Rounded from '@mui/icons-material/Brightness7Rounded'
+import Brightness2Icon from '@mui/icons-material/Brightness2';
 // Local Data
 import data from "../../data/portfolio.json";
 
@@ -32,32 +34,14 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
 
               <div className="flex items-center">
                 {data.darkMode && (
-                  <Button
-                    onClick={() =>
-                      setTheme(theme === "dark" ? "light" : "dark")
-                    }
-                  >
-                    <img
-                      className="h-6"
-                      src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"
-                        }`}
-                    ></img>
-                  </Button>
+                  <div className="p-1 laptop:p-2 m-1 laptop:m-2 rounded-lg flex items-center transition-all ease-out duration-300 hover:bg-slate-600 text-white hover:scale-105 active:scale-100  tablet:first:ml-0 cursor-pointer">
+                    <Brightness7Rounded onClick={() => setTheme(theme === "dark" ? "light" : "dark")} />
+                  </div>
                 )}
 
-                <Popover.Button>
-                  <img
-                    className="h-5"
-                    src={`/images/${!open
-                      ? theme === "dark"
-                        ? "menu-white.svg"
-                        : "menu.svg"
-                      : theme === "light"
-                        ? "cancel.svg"
-                        : "cancel-white.svg"
-                      }`}
-                  ></img>
-                </Popover.Button>
+                {/* <div className="p-1 laptop:p-2 m-1 laptop:m-2 rounded-lg flex items-center transition-all ease-out duration-300 hover:bg-slate-600 text-white hover:scale-105 active:scale-100  tablet:first:ml-0 cursor-pointer">
+                  <Brightness7Rounded onClick={() => setTheme(theme === "dark" ? "light" : "dark")} />
+                </div> */}
               </div>
             </div>
             <Popover.Panel
@@ -74,7 +58,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                   {showResume && (
                     <Button
                       onClick={() =>
-                        window.open("mailto:hello@chetanverma.com")
+                        window.open("mailto:st.vakalis@gmail.com")
                       }
                     >
                       Resume
@@ -82,7 +66,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                   )}
 
                   <Button
-                    onClick={() => window.open("mailto:hello@chetanverma.com")}
+                    onClick={() => window.open("mailto:st.vakalis@gmail.com")}
                   >
                     Contact
                   </Button>
@@ -105,7 +89,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                   )}
 
                   <Button
-                    onClick={() => window.open("mailto:hello@chetanverma.com")}
+                    onClick={() => window.open("mailto:st.vakalis@gmail.com")}
                   >
                     Contact
                   </Button>
@@ -141,18 +125,24 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
               </Button>
             )}
 
-            <Button onClick={() => window.open("mailto:hello@chetanverma.com")}>
+            <Button onClick={() => window.open("mailto:st.vakalis@gmail.com")}>
               Contact
             </Button>
             {mounted && theme && data.darkMode && (
-              <Button
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              >
-                <img
-                  className="h-6"
-                  src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
-                ></img>
-              </Button>
+              <React.Fragment>
+                {theme === "dark" ?
+                  <div className="p-1 laptop:p-2 m-1 laptop:m-2 rounded-lg flex items-center transition-all ease-out duration-300 hover:bg-slate-600 text-white hover:scale-105 active:scale-100 tablet:first:ml-0 cursor-pointer">
+                    <Brightness7Rounded
+                      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                    />
+                  </div> :
+                  <div className="p-1 laptop:p-2 m-1 laptop:m-2 rounded-lg flex items-center transition-all ease-out duration-300 hover:bg-slate-100 text-white hover:scale-105 active:scale-100 tablet:first:ml-0 cursor-pointer">
+                    <Brightness2Icon
+                      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                      sx={{ color: "#040D0A" }}
+                    />
+                  </div>}
+              </React.Fragment>
             )}
           </div>
         ) : (
@@ -170,7 +160,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
               </Button>
             )}
 
-            <Button onClick={() => window.open("mailto:hello@chetanverma.com")}>
+            <Button onClick={() => window.open("mailto:st.vakalis@gmail.com")}>
               Contact
             </Button>
 
