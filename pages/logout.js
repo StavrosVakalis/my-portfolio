@@ -1,10 +1,10 @@
-import { signOut, getSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 
 export const LogOut = () => {
     const router = useRouter();
-    const session = useSession();
+    const session = useSession({ required: true });
 
     useEffect(() => {
         const trySignOut = async () => {

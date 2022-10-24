@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 
 export const LogIn = () => {
     const router = useRouter();
-    const session = useSession();
+    const session = useSession({ required: true });
     useEffect(() => {
         const trySignIn = async () => {
             if (!session || !session.data) await signIn('github')
