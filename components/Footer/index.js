@@ -29,10 +29,6 @@ const Footer = ({ }) => {
             <span> </span>Alexandros Tsiouris
           </a>
         </Link>
-        , Theme by{" "}
-        <Link href="http://www.chetanverma.com">
-          <a className="underline underline-offset-1">Chetan Verma</a>
-        </Link>
       </h1>
     </>
   );
