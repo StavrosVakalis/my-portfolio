@@ -16,7 +16,6 @@ const Edit = () => {
 
   useEffect(() => {
     const redirect = async () => {
-      const session = await getSession();
       if (!session || session.status === 'unauthenticated') {
         router.push("./");
         return;
@@ -24,7 +23,7 @@ const Edit = () => {
       setIsAuthed(true)
     }
     redirect();
-  }, [session.status, router])
+  }, [router, session])
 
   // states
   const [data, setData] = useState(yourData);
