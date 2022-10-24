@@ -16,7 +16,7 @@ export default NextAuth({
                 return;
             }
             return session;
-        },
+        }
         // async signIn({ user, account, email, credentials, profile }) {
         //     const admins = process.env.ADMINS.split(',');
         //     if (!admins.some(x => x === session.user?.email)) return false
