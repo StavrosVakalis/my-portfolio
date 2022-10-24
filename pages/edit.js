@@ -10,7 +10,7 @@ import yourData from "../data/portfolio.json";
 import { useRouter } from "next/router";
 
 const Edit = () => {
-  const session = useSession();
+  const session = useSession({ required: true });
   const router = useRouter();
   const [isAuthed, setIsAuthed] = useState(false);
 

@@ -5,7 +5,7 @@ export default NextAuth({
     providers: [
         GitHubProvider({
             clientId: process.env.GITHUB_ID,
-            clientSecret: process.env.GITHUB_SECRET,
+            clientSecret: process.env.GITHUB_SECRET
         })
     ],
     secret: process.env.JTW_SECRET,
@@ -16,7 +16,7 @@ export default NextAuth({
                 return;
             }
             return session;
-        },
+        }
         // async signIn({ user, account, email, credentials, profile }) {
         //     const admins = process.env.ADMINS.split(',');
         //     if (!admins.some(x => x === session.user?.email)) return false

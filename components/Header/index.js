@@ -25,7 +25,6 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
 
 
   const trySignIn = async () => {
-    debugger;
     if (session.data) {
       await signOut();
       return;
@@ -147,11 +146,11 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                         onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                       />
                     </div>
-                    <div className="p-1 laptop:p-2 m-1 laptop:m-2 rounded-lg flex items-center transition-all ease-out duration-300 hover:bg-slate-600 text-white hover:scale-105 active:scale-100 tablet:first:ml-0 cursor-pointer">
+                    {/* <div className="p-1 laptop:p-2 m-1 laptop:m-2 rounded-lg flex items-center transition-all ease-out duration-300 hover:bg-slate-600 text-white hover:scale-105 active:scale-100 tablet:first:ml-0 cursor-pointer">
                       <LoginIcon
                         onClick={trySignIn}
                       />
-                    </div>
+                    </div> */}
                   </React.Fragment> :
                   <React.Fragment>
                     <div className="p-1 laptop:p-2 m-1 laptop:m-2 rounded-lg flex items-center transition-all ease-out duration-300 hover:bg-slate-100 text-white hover:scale-105 active:scale-100 tablet:first:ml-0 cursor-pointer">
@@ -160,11 +159,11 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                         sx={{ color: "#040D0A" }}
                       />
                     </div>
-                    <div className="p-1 laptop:p-2 m-1 laptop:m-2 rounded-lg flex items-center transition-all ease-out duration-300 hover:bg-slate-100 text-white hover:scale-105 active:scale-100 tablet:first:ml-0 cursor-pointer">
+                    {/* <div className="p-1 laptop:p-2 m-1 laptop:m-2 rounded-lg flex items-center transition-all ease-out duration-300 hover:bg-slate-100 text-white hover:scale-105 active:scale-100 tablet:first:ml-0 cursor-pointer">
                       <LoginIcon
                         sx={{ color: "#040D0A" }}
                         onClick={trySignIn} />
-                    </div>
+                    </div> */}
                   </React.Fragment>}
               </React.Fragment>
             )}
