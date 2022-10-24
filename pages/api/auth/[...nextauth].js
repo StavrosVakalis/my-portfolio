@@ -9,18 +9,18 @@ export default NextAuth({
         })
     ],
     secret: process.env.NEXT_AUTH_SECRET,
-    // callbacks: {
-    //     async session({ session }) {
-    //         const admins = process.env.ADMINS.split(',');
-    //         if (!admins.some(x => x === session.user?.email)) {
-    //             return ;
-    //         }
-    //         return session;
-    //     }
-    //     // async signIn({ user, account, email, credentials, profile }) {
-    //     //     const admins = process.env.ADMINS.split(',');
-    //     //     if (!admins.some(x => x === session.user?.email)) return false
-    //     //     return true
-    //     // }
-    // }
+    callbacks: {
+        async session({ session }) {
+            const admins = process.env.ADMINS.split(',');
+            if (!admins.some(x => x === session.user?.email)) {
+                return;
+            }
+            return session;
+        }
+        // async signIn({ user, account, email, credentials, profile }) {
+        //     const admins = process.env.ADMINS.split(',');
+        //     if (!admins.some(x => x === session.user?.email)) return false
+        //     return true
+        // }
+    }
 });
