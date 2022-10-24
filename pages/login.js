@@ -1,16 +1,16 @@
-import { signIn, getSession } from "next-auth/react";
+import { signIn, getSession, useSession } from "next-auth/react";
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 
 export const LogIn = () => {
     const router = useRouter();
+    const session = useSession();
     useEffect(() => {
         const trySignIn = async () => {
-            const session = await getSession();
-            if (!session) await signIn('github')
+            if (!session || !session.data) await signIn('github')
         }
         trySignIn().then(() => router.push("/"))
-    }, [router])
+    }, [router, session])
 
     return (
         <div className="text-center">

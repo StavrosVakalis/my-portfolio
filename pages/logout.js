@@ -4,13 +4,14 @@ import { useRouter } from "next/router";
 
 export const LogOut = () => {
     const router = useRouter();
+    const session = useSession();
+
     useEffect(() => {
         const trySignOut = async () => {
-            const session = await getSession();
-            if (session) await signOut();
+            if (session && session.data) await signOut();
         }
         trySignOut().then(() => router.push("/"))
-    }, [router])
+    }, [router, session])
 
     return (
         <div className="text-center">
