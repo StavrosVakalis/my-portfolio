@@ -1,3 +1,4 @@
+import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Router, { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
@@ -12,6 +13,7 @@ const Blog = ({ posts }) => {
   const text = useRef();
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
+  const session = useSession();
 
   useIsomorphicLayoutEffect(() => {
     stagger(
@@ -94,15 +96,17 @@ const Blog = ({ posts }) => {
                     </span>
                     {process.env.NODE_ENV === "development" && mounted && (
                       <div className="absolute top-0 right-0">
-                        <Button
-                          onClick={(e) => {
-                            deleteBlog(post.slug);
-                            e.stopPropagation();
-                          }}
-                          type={"primary"}
-                        >
-                          Delete
-                        </Button>
+                        {session.status !== 'authenticated' ?
+                          <></> :
+                          <Button
+                            onClick={(e) => {
+                              deleteBlog(post.slug);
+                              e.stopPropagation();
+                            }}
+                            type={"primary"}
+                          >
+                            Delete
+                          </Button>}
                       </div>
                     )}
                   </div>
@@ -112,9 +116,11 @@ const Blog = ({ posts }) => {
         </div>
         {process.env.NODE_ENV === "development" && mounted && (
           <div className="fixed bottom-6 right-6">
-            <Button onClick={createBlog} type={"primary"}>
-              Add New Post +{" "}
-            </Button>
+            {session.status !== 'authenticated' ?
+              <></> :
+              <Button onClick={createBlog} type={"primary"}>
+                Add New Post +{" "}
+              </Button>}
           </div>
         )}
       </>

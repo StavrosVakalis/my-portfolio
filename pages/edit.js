@@ -1,17 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../components/Button";
 import Header from "../components/Header";
 import { v4 as uuidv4 } from "uuid";
 import { useTheme } from "next-themes";
+import { useSession, getSession } from "next-auth/react";
 
 // Data
 import yourData from "../data/portfolio.json";
+import { useRouter } from "next/router";
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/.",
+        permanent: false
+      }
+    }
+  }
+
+  return {
+    props: { session }
+  }
+}
 
 const Edit = () => {
   // states
   const [data, setData] = useState(yourData);
   const [currentTabs, setCurrentTabs] = useState("HEADER");
   const { theme } = useTheme();
+  const session = useSession();
+  const router = useRouter();
 
   const saveData = () => {
     if (process.env.NODE_ENV === "development") {
@@ -59,7 +79,6 @@ const Edit = () => {
   };
 
   // Services Handler
-
   const editServices = (serviceIndex, editService) => {
     let copyServices = data.services;
     copyServices[serviceIndex] = { ...editService };
@@ -150,7 +169,7 @@ const Edit = () => {
       <Header></Header>
       <div className="mt-10">
         <div
-          className={`z-10 top-12 ${theme === "dark" ? "bg-transparent" : "bg-white"
+          className={`z-10 top-12 ${theme === "dark" || "system" ? "bg-transparent" : "bg-white"
             }`}
         >
           <div className="flex items-center justify-between">
@@ -338,12 +357,14 @@ const Edit = () => {
                 <div className="mt-10" key={project.id}>
                   <div className="flex items-center justify-between">
                     <h1 className="text-2xl">{project.title}</h1>
-                    <Button
-                      onClick={() => deleteProject(project.id)}
-                      type="primary"
-                    >
-                      Delete
-                    </Button>
+                    {session.status !== 'authenticated' ?
+                      <></> :
+                      <Button
+                        onClick={() => deleteProject(project.id)}
+                        type="primary"
+                      >
+                        Delete
+                      </Button>}
                   </div>
 
                   <div className="flex items-center mt-5">
@@ -426,12 +447,14 @@ const Edit = () => {
                 <div key={service.id}>
                   <div className="flex items-center justify-between">
                     <h1 className="text-2xl">{service.title}</h1>
-                    <Button
-                      onClick={() => deleteService(service.id)}
-                      type="primary"
-                    >
-                      Delete
-                    </Button>
+                    {session.status !== 'authenticated' ?
+                      <></> :
+                      <Button
+                        onClick={() => deleteService(service.id)}
+                        type="primary"
+                      >
+                        Delete
+                      </Button>}
                   </div>
                   <div className="flex items-center mt-5">
                     <label className="w-1/5 text-lg opacity-50">Title</label>
@@ -490,12 +513,14 @@ const Edit = () => {
                 <div key={social.id}>
                   <div className="flex items-center justify-between">
                     <h1 className="text-2xl">{social.title}</h1>
-                    <Button
-                      onClick={() => deleteSocials(social.id)}
-                      type="primary"
-                    >
-                      Delete
-                    </Button>
+                    {session.status !== 'authenticated' ?
+                      <></> :
+                      <Button
+                        onClick={() => deleteSocials(social.id)}
+                        type="primary"
+                      >
+                        Delete
+                      </Button>}
                   </div>
                   <div className="flex items-center mt-5">
                     <label className="w-1/5 text-lg opacity-50">Title</label>
@@ -574,12 +599,14 @@ const Edit = () => {
                 <div className="mt-5" key={experiences.id}>
                   <div className="flex items-center justify-between">
                     <h1 className="text-2xl">{experiences.position}</h1>
-                    <Button
-                      // onClick={() => deleteProject(project.id)}
-                      type="primary"
-                    >
-                      Delete
-                    </Button>
+                    {session.status !== 'authenticated' ?
+                      <></> :
+                      <Button
+                        onClick={() => deleteProject(project.id)}
+                        type="primary"
+                      >
+                        Delete
+                      </Button>}
                   </div>
 
                   <div className="flex items-center mt-5">

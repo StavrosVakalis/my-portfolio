@@ -8,11 +8,13 @@ import { useTheme } from "next-themes";
 // Data
 import { name, showResume } from "../data/portfolio.json";
 import { resume } from "../data/portfolio.json";
+import { useSession } from "next-auth/react";
 
 const Resume = () => {
   const router = useRouter();
   const theme = useTheme();
   const [mount, setMount] = useState(false);
+  const { status } = useSession();
 
   useEffect(() => {
     setMount(true);
@@ -24,9 +26,11 @@ const Resume = () => {
     <>
       {process.env.NODE_ENV === "development" && (
         <div className="fixed bottom-6 right-6">
-          <Button onClick={() => router.push("/edit")} type={"primary"}>
-            Edit Resume
-          </Button>
+          {status !== 'authenticated' ?
+            <></> :
+            <Button onClick={() => router.push("/edit")} type={"primary"}>
+              Edit Resume
+            </Button>}
         </div>
       )}
 
