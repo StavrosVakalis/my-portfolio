@@ -9,7 +9,7 @@
 }
 
 html{
-  @apply cursor-default overflow-auto;
+  @apply cursor-default scrollbar-hide ;
 }
 
 body {

@@ -56,7 +56,6 @@ export default function Home() {
       <Head>
         <title>{data.name}</title>
       </Head>
-      {/* This button should not go into production */}
       {session.status === 'authenticated' && (
         <div className="fixed bottom-5 right-5">
           <Link href="/edit">
@@ -67,7 +66,7 @@ export default function Home() {
       <div className="gradient-circle"></div>
       <div className="gradient-circle-bottom"></div>
 
-      <div className="container mx-auto mb-10">
+      <div className="container mx-auto mb-10 ">
         <Header
           handleWorkScroll={handleWorkScroll}
           handleAboutScroll={handleAboutScroll}
@@ -111,7 +110,6 @@ export default function Home() {
                 img={project.imageSrc}
                 name={project.title}
                 description={project.description}
-                onClick={() => window.open(project.url)}
               />
             ))}
           </div>
