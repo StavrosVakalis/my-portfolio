@@ -24,7 +24,7 @@ export default function Home() {
   const textFour = useRef();
   const session = useSession();
 
-  console.log(process.env.AUTHED_USER_EMAIL)
+  console.log(session)
 
   // Handling Scroll
   const handleWorkScroll = () => {
