@@ -8,7 +8,7 @@ export default NextAuth({
             clientSecret: process.env.GITHUB_SECRET
         })
     ],
-    secret: process.env.JTW_SECRET,
+    secret: process.env.NEXT_AUTH_SECRET,
     callbacks: {
         async session({ session }) {
             const admins = process.env.ADMINS.split(',');
