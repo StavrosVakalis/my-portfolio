@@ -23,6 +23,7 @@ export default function Home() {
   const textThree = useRef();
   const textFour = useRef();
   const session = useSession();
+  console.log(`Session ${session}`)
 
   // Handling Scroll
   const handleWorkScroll = () => {
