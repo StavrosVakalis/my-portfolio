@@ -10,25 +10,17 @@ import yourData from "../data/portfolio.json";
 import { useRouter } from "next/router";
 
 const Edit = () => {
-  // const session = useSession({ required: true });
-  const session = useSession();
+  const session = useSession({ required: true });
   const router = useRouter();
-
-  // useEffect(() => {
-  //   const redirect = async () => {
-  //     if (!session || session.status === 'unauthenticated') {
-  //       router.push("./");
-  //       return;
-  //     }
-  //     setIsAuthed(true)
-  //   }
-  //   redirect();
-  // }, [router, session])
-
-  // states
+  const [isAuthed, setIsAuthed] = useState(false);
   const [data, setData] = useState(yourData);
   const [currentTabs, setCurrentTabs] = useState("HEADER");
   const { theme } = useTheme();
+
+  if (!session || session.status === 'unauthenticated') {
+    router.push("/")
+    return null;
+  }
 
   const saveData = () => {
     if (process.env.NODE_ENV === "development") {

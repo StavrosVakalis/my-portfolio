@@ -24,11 +24,11 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
   }, []);
 
   const trySignIn = async () => {
-    // if (session) {
-    //   await signOut();
-    //   return;
-    // }
-    await signIn('github');
+    if (session.data) {
+      await signOut({ callbackUrl: "/" });
+      return;
+    }
+    await signIn('github', { callbackUrl: "/edit" })
   }
 
   return (
