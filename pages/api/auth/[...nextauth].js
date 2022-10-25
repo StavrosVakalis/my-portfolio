@@ -22,5 +22,9 @@ export default NextAuth({
         //     if (!admins.some(x => x === session.user?.email)) return false
         //     return true
         // }
+    },
+    pages: {
+        signIn: "/auth/login",
+        signOut: "/auth/logout"
     }
 });

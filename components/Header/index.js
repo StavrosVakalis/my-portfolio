@@ -23,15 +23,6 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
     setTheme("dark");
   }, []);
 
-
-  const trySignIn = async () => {
-    if (session.data) {
-      await signOut();
-      return;
-    }
-    await signIn('github');
-  }
-
   return (
     <>
       <Popover className="block tablet:hidden mt-5">
