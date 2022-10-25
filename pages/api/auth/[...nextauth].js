@@ -8,23 +8,26 @@ export default NextAuth({
             clientSecret: process.env.GITHUB_SECRET,
         })
     ],
-    secret: process.env.NEXT_AUTH_SECRET,
+    secret: process.env.NEXTAUTH_SECRET,
     callbacks: {
         async session({ session }) {
             const admins = process.env.ADMINS.split(',');
             if (!admins.some(x => x === session.user?.email)) {
-                return;
+                return session;
             }
             return session;
-        }
+        },
+        // authorized({ req, token }) {
+        //     if (token) return true;
+        // }
         // async signIn({ user, account, email, credentials, profile }) {
         //     const admins = process.env.ADMINS.split(',');
         //     if (!admins.some(x => x === session.user?.email)) return false
         //     return true
         // }
     },
-    pages: {
-        signIn: "/auth/login",
-        signOut: "/auth/logout"
-    }
+    // pages: {
+    //     signIn: "/auth/login",
+    //     signOut: "/auth/logout"
+    // }
 });
