@@ -3,11 +3,22 @@ import Button from "../components/Button";
 import Header from "../components/Header";
 import { v4 as uuidv4 } from "uuid";
 import { useTheme } from "next-themes";
-import { useSession } from "next-auth/react";
+import { useSession, getSession } from "next-auth/react";
 
 // Data
 import yourData from "../data/portfolio.json";
 import { useRouter } from "next/router";
+
+
+export async function getStaticProps(context) {
+  const session = await getSession(context);
+
+  return {
+    props: {
+      session,
+    },
+  };
+}
 
 const Edit = () => {
   const session = useSession({ required: true });

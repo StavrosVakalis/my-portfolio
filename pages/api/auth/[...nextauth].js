@@ -13,7 +13,7 @@ export default NextAuth({
         async session({ session }) {
             const admins = process.env.ADMINS.split(',');
             if (!admins.some(x => x === session.user?.email)) {
-                return session;
+                return;
             }
             return session;
         },
