@@ -4,7 +4,7 @@ import { SessionProvider } from "next-auth/react";
 
 const App = ({ Component, pageProps }) => {
   return (
-    <SessionProvider session={pageProps.session} basePath="/my-portfolio/api/auth">
+    <SessionProvider session={pageProps.session} basePath="https://stavrosvakalis.github.io/my-portfolio/api/auth">
       <ThemeProvider>
         <Component {...pageProps} />
       </ThemeProvider>
