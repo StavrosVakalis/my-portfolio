@@ -6,16 +6,15 @@ import Button from "../Button";
 import Brightness7Rounded from '@mui/icons-material/Brightness7Rounded'
 import Brightness2Icon from '@mui/icons-material/Brightness2';
 import LoginIcon from '@mui/icons-material/Login';
-import { useSession, signIn, signOut } from "next-auth/react";
-
-// Local Data
+import { useSession, signIn, signOut, getSession } from "next-auth/react";
+// Data
 import data from "../../data/portfolio.json";
 
 const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
   const router = useRouter();
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const session = useSession();
+  //const session = useSession();
   const { name, showBlog, showResume } = data;
 
   useEffect(() => {
@@ -24,7 +23,8 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
   }, []);
 
   const trySignIn = async () => {
-    if (session.data) {
+    const session = await getSession();
+    if (session) {
       await signOut({ callbackUrl: "/" });
       return;
     }
