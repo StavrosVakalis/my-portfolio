@@ -67,59 +67,70 @@ const Resume = () => {
               </div>
               <div className="mt-5">
                 <h1 className="text-2xl font-bold">Education</h1>
-                <div className="mt-2">
-                  <h2 className="text-lg">{resume.education.universityName}</h2>
-                  <h3 className="text-sm opacity-75">
-                    {resume.education.universityDate}
-                  </h3>
-                  <p className="text-sm mt-2 opacity-50">
-                    {resume.education.universityPara}
-                  </p>
-                </div>
+                {resume.education && resume.education.map(x => {
+                  return (
+                    <div className="mt-2" key={`${x.universityName}-${x.universityDate}`}>
+                      <h2 className="text-lg">{x.universityName}</h2>
+                      <h3 className="text-sm opacity-75">
+                        {x.universityDate}
+                      </h3>
+                      {x.universityPara.split("|").length > 0 ?
+                        x.universityPara.split("|").map((s, idx) => {
+                          return (<p className="text-sm opacity-50" key={idx}>
+                            {s}
+                          </p>
+                          )
+                        }) :
+                        <p className="text-sm mt-2 opacity-50">
+                          {x.universityPara}
+                        </p>}
+                    </div>)
+                })}
               </div>
-              <div className="mt-5">
-                <h1 className="text-2xl font-bold">Skills</h1>
-                <div className="flex mob:flex-col desktop:flex-row justify-between">
-                  {resume.languages && (
-                    <div className="mt-2 mob:mt-5">
-                      <h2 className="text-lg">Languages</h2>
-                      <ul className="list-disc">
-                        {resume.languages.map((language, index) => (
-                          <li key={index} className="ml-5 py-2">
-                            {language}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
+              {resume.languages.length > 0 || resume.frameworks.length > 0 || resume.others.length > 0 &&
+                <div className="mt-5">
+                  <h1 className="text-2xl font-bold">Skills</h1>
+                  <div className="flex mob:flex-col desktop:flex-row justify-between">
+                    {resume.languages && (
+                      <div className="mt-2 mob:mt-5">
+                        <h2 className="text-lg">Languages</h2>
+                        <ul className="list-disc">
+                          {resume.languages.map((language, index) => (
+                            <li key={index} className="ml-5 py-2">
+                              {language}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
 
-                  {resume.frameworks && (
-                    <div className="mt-2 mob:mt-5">
-                      <h2 className="text-lg">Frameworks</h2>
-                      <ul className="list-disc">
-                        {resume.frameworks.map((framework, index) => (
-                          <li key={index} className="ml-5 py-2">
-                            {framework}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
+                    {resume.frameworks && (
+                      <div className="mt-2 mob:mt-5">
+                        <h2 className="text-lg">Frameworks</h2>
+                        <ul className="list-disc">
+                          {resume.frameworks.map((framework, index) => (
+                            <li key={index} className="ml-5 py-2">
+                              {framework}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
 
-                  {resume.others && (
-                    <div className="mt-2 mob:mt-5">
-                      <h2 className="text-lg">Others</h2>
-                      <ul className="list-disc">
-                        {resume.others.map((other, index) => (
-                          <li key={index} className="ml-5 py-2">
-                            {other}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-              </div>
+                    {resume.others && (
+                      <div className="mt-2 mob:mt-5">
+                        <h2 className="text-lg">Others</h2>
+                        <ul className="list-disc">
+                          {resume.others.map((other, index) => (
+                            <li key={index} className="ml-5 py-2">
+                              {other}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                </div>}
             </div>
           </div>
         )}

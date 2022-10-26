@@ -1,1 +1,130 @@
-{"name":"","headerTaglineOne":"Hello 👋, I'm Stavros Vakalis","headerTaglineTwo":"","showBlog":true,"darkMode":true,"showResume":true,"socials":[],"projects":[{"id":"1","title":"Project One Test","description":"Web Design","imageSrc":"https://images.unsplash.com/photo-1661961110372-8a7682543120?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80","url":""}],"services":[{"id":"1","title":"Art Direction","description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s"}],"aboutpara":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.","resume":{"tagline":"👋  I'm a Cowboy","description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s","experiences":[{"id":"1","dates":"March 2022 - Present","type":"Full Time","position":"Cowboy","bullets":"Bullet One, Bullet Two"},{"id":"d495c23b-4f65-479a-9b8a-cfbc1c089725","dates":"July 2020 - March 2022","type":"Full Time","position":"Frontend Engineer at X","bullets":"Lorem Ipsum is simply dummy text of the printing and typesetting industry."}],"education":{"universityName":"University X","universityDate":"2016-2020","universityPara":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"},"languages":["Javascript","HTML5","CSS","Python","Go"],"frameworks":["React","Typescript","NodeJs"],"others":["Figma","AdobeXD","AWS"]},"contact":{"email":"st.vakalis@gmail.com"}}
+{
+    "name": "",
+    "headerTaglineOne": "Hello 👋, I'm Stavros Vakalis",
+    "headerTaglineTwo": "I'm an assistant professor 🎓 University of South Florida at Department of Electrical Engineering",
+    "showBlog": true,
+    "darkMode": true,
+    "showResume": true,
+    "socials": [
+        {
+            "id": "243f9ac7-cf4b-430b-b985-9305fdc6e935",
+            "title": "WAMI USF",
+            "link": "http://wami.eng.usf.edu"
+        },
+        {
+            "id": "ed280b9e-4139-4adb-85f8-bd5e9459d1e9",
+            "title": "USF",
+            "link": "https://www.usf.edu/"
+        }
+    ],
+    "projects": [
+        {
+            "id": "1",
+            "title": "Project One Test",
+            "description": "Web Design",
+            "imageSrc": "https://images.unsplash.com/photo-1661961110372-8a7682543120?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+            "url": ""
+        },
+        {
+            "id": "38521dd0-6e1e-473c-8320-a0106ad36c6d",
+            "title": "New Project",
+            "description": "Web Design & Development",
+            "imageSrc": "https://images.unsplash.com/photo-1661961110372-8a7682543120?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+            "url": ""
+        },
+        {
+            "id": "24282001-5d02-4edc-bd52-829e9e81e674",
+            "title": "New Project",
+            "description": "Web Design & Development",
+            "imageSrc": "https://images.unsplash.com/photo-1661961110372-8a7682543120?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+            "url": ""
+        }
+    ],
+    "services": [
+        {
+            "id": "1",
+            "title": "Research Assistant",
+            "description": "Michigan State University, MI, USA ‎\n📅 August 2017 - August 2022"
+        },
+        {
+            "id": "a5a54bb3-115f-4715-8ef7-8d6560cf980c",
+            "title": "Hardware Engineering Intern",
+            "description": "Verily Life Sciences, CA, USA\nWorked as Wireless/RF Engineer for Life Sciences Applications‎\n📅 May 2021 - August 2021"
+        },
+        {
+            "id": "741a8c5e-f6b4-491f-8c89-0ad7a02ebb6a",
+            "title": "Teaching Assistant",
+            "description": "Michigan State University, MI, USA\nTaught “Electromagnetic Compatibility” undergraduate laboratory in both in-person and remote setting‎ \n📅 January 2022 - May 2022"
+        },
+        {
+            "id": "cf81d944-40cf-407d-b1c3-f6bfcc96baa2",
+            "title": "Assistant Professor",
+            "description": "Univerisity of South Florida, FL, USA\nTenure-track assistant professor with duties of teaching and research on wireless systems and sensing.\n📅 August 2022 - present"
+        }
+    ],
+    "aboutpara": "Stavros Vakalis is an assistant professor with the Department of Electrical Engineering, University of South Florida. He received the PhD and MSc degrees from Michigan State University, MI, USA and the Diploma degree in Electrical and Computer Engineering from National Technical University of Athens, Greece. He is the recipient of multiple international fellowships and awards and first and second place in student paper competitions. His research interests include applied electromagnetics with an emphasis on wireless millimeter-wave systems for imaging, radar, sensing, and communications.",
+    "resume": {
+        "tagline": "👋  My name is Stavros Vakalis",
+        "description": "I'm an assistant professor with the Department of Electrical Engineering, University of South Florida. I've received a PhD and a MSc degree from Michigan State University, MI, USA and a Diploma degree in Electrical and Computer Engineering from National Technical University of Athens, Greece. I'm currently a recipient of multiple international fellowships and awards and first and second place in student paper competitions. \nMy research interests include applied electromagnetics with an emphasis on wireless millimeter-wave systems for imaging, radar, sensing, and communications.",
+        "experiences": [
+            {
+                "id": "1",
+                "dates": "August 2022 - Present",
+                "type": "Full Time",
+                "position": "Assistant Professor",
+                "bullets": "🎓Univerisity of South Florida, FL, USA | Tenure-track assistant professor with duties of teaching and research on wireless systems and sensing."
+            },
+            {
+                "id": "d495c23b-4f65-479a-9b8a-cfbc1c089725",
+                "dates": "January 2022 - May 2022",
+                "type": "Full Time",
+                "position": "Teaching Assistant",
+                "bullets": "🎓Michigan State University, MI, USA | Taught “Electromagnetic Compatibility” undergraduate laboratory in both in-person and remote setting."
+            },
+            {
+                "id": "3d78cae9-c2e2-4b68-b2f3-f271bf9992cf",
+                "dates": "May 2021 - August 2021",
+                "type": "Intership",
+                "position": "Hardware Engineering Intern",
+                "bullets": "🏢 Verily Life Sciences, CA, USA | Worked as Wireless/RF Engineer for Life Sciences Applications"
+            },
+            {
+                "id": "c1f64293-f2ce-4c13-bbe2-40237057d66b",
+                "dates": "August 2017 - August 2022",
+                "type": "Full Time",
+                "position": "Research Assistant",
+                "bullets": "🎓Michigan State University, MI, USA"
+            },
+            {
+                "id": "43efac2e-ff8f-4788-b9d6-f820ad94fbda",
+                "dates": "~Ongoing",
+                "type": "",
+                "position": "Research Outline",
+                "bullets": "Developed the first millimeter-wave imaging system that can provide real-time imaging at 652 fps. | Experimentally demonstrated image reconstructions using non-cooperative WiFi and 5G reflections. |  Developed an N-element array technique that can perform angle estimation of O(N2 ) targets. | Designed a 5.8 GHz FMCW radar board and software for drone localization and tracking. | Theoretically derived and experimentally demonstrated coherence measurements for imaging and radar. | Worked on harmonic radar for micro-Doppler tracking of human and object motion"
+            }
+        ],
+        "education": [
+            {
+                "universityName": "Michigan State University",
+                "universityDate": "August 2017 - August 2022",
+                "universityPara": "Doctor of Philosophy, Department of Electrical and Computer Engineering | CeDiD: 22VP-ZIBT-SVSL | Advisor: Jeffrey A. Nanzer, GPA: 3.86/4.0 | Thesis title: “High-Speed Millimeter-Wave Active Incoherent Fourier Domain Imaging”"
+            },
+            {
+                "universityName": "Michigan State University",
+                "universityDate": "August 2017 - May 2020",
+                "universityPara": "Master of Science, Department of Electrical and Computer Engineering | CeDiD: 20DR-YYCY-SSS8 | Advisor: Jeffrey A. Nanzer, GPA: 4.0/4.0"
+            },
+            {
+                "universityName": "National Technical University of Athens, Greece",
+                "universityDate": "August 2012 - July 2017",
+                "universityPara": "Diploma (5-year degree), School of Electrical and Computer Engineering | Advisor: Panayiotis Cottis, GPA: 8.38/10 | Thesis title:“Real-time news gathering employing TV white spaces”"
+            }
+        ],
+        "languages": [],
+        "frameworks": [],
+        "others": []
+    },
+    "contact": {
+        "email": "st.vakalis@gmail.com"
+    }
+}
