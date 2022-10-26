@@ -137,7 +137,7 @@ export default function Home({ posts }) {
                 ref={text}
                 className="tablet:m-10 text-2xl text-bold"
               >
-                Research Projects.
+                Research Preview.
               </h1>
               <div className="mt-10 grid grid-cols-1 mob:grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 justify-between gap-10">
                 {posts &&
