@@ -10,14 +10,14 @@ import yourData from "../data/portfolio.json";
 import { useRouter } from "next/router";
 
 const Edit = () => {
-  const session = useSession();
+  const { status } = useSession();
   const router = useRouter();
   const [isAuthed, setIsAuthed] = useState(false);
   const [data, setData] = useState(yourData);
   const [currentTabs, setCurrentTabs] = useState("HEADER");
   const { theme } = useTheme();
 
-  if (!session || session.status === 'unauthenticated') {
+  if (!status || status === 'unauthenticated') {
     router.push("/")
     return null;
   }
@@ -347,7 +347,7 @@ const Edit = () => {
                   <div className="mt-10" key={project.id}>
                     <div className="flex items-center justify-between">
                       <h1 className="text-2xl">{project.title}</h1>
-                      {session.status !== 'authenticated' ?
+                      {status !== 'authenticated' ?
                         <></> :
                         <Button
                           onClick={() => deleteProject(project.id)}
@@ -437,7 +437,7 @@ const Edit = () => {
                   <div key={service.id}>
                     <div className="flex items-center justify-between">
                       <h1 className="text-2xl">{service.title}</h1>
-                      {session.status !== 'authenticated' ?
+                      {status !== 'authenticated' ?
                         <></> :
                         <Button
                           onClick={() => deleteService(service.id)}
@@ -503,7 +503,7 @@ const Edit = () => {
                   <div key={social.id}>
                     <div className="flex items-center justify-between">
                       <h1 className="text-2xl">{social.title}</h1>
-                      {session.status !== 'authenticated' ?
+                      {status !== 'authenticated' ?
                         <></> :
                         <Button
                           onClick={() => deleteSocials(social.id)}
@@ -589,7 +589,7 @@ const Edit = () => {
                   <div className="mt-5" key={experiences.id}>
                     <div className="flex items-center justify-between">
                       <h1 className="text-2xl">{experiences.position}</h1>
-                      {session.status !== 'authenticated' ?
+                      {status !== 'authenticated' ?
                         <></> :
                         <Button
                           onClick={() => deleteProject(project.id)}

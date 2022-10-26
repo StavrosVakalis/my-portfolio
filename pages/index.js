@@ -7,12 +7,11 @@ import { useIsomorphicLayoutEffect } from "../utils";
 import { stagger } from "../animations";
 import Footer from "../components/Footer";
 import Head from "next/head";
-import Button from "../components/Button";
 import Link from "next/link";
-
-// Local Data
+import Button from "../components/Button/index";
+// Data
 import data from "../data/portfolio.json";
-import { useSession } from "next-auth/react";
+import { useSession, getSession } from "next-auth/react";
 
 export default function Home() {
   // Ref
@@ -22,7 +21,7 @@ export default function Home() {
   const textTwo = useRef();
   const textThree = useRef();
   const textFour = useRef();
-  //const session = useSession();
+  const { status } = useSession();
 
   // Handling Scroll
   const handleWorkScroll = () => {
@@ -54,13 +53,13 @@ export default function Home() {
       <Head>
         <title>{data.name}</title>
       </Head>
-      {/* {session.status === 'authenticated' && (
+      {status === 'authenticated' && (
         <div className="fixed bottom-5 right-5">
           <Link href="/edit">
             <Button type="primary">Edit Data</Button>
           </Link>
         </div>
-      )} */}
+      )}
       <div className="gradient-circle"></div>
       <div className="gradient-circle-bottom"></div>
 
