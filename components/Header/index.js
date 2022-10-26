@@ -5,8 +5,7 @@ import React, { useEffect, useState } from "react";
 import Button from "../Button";
 import Brightness7Rounded from '@mui/icons-material/Brightness7Rounded'
 import Brightness2Icon from '@mui/icons-material/Brightness2';
-import LoginIcon from '@mui/icons-material/Login';
-import { useSession, signIn, signOut, getSession } from "next-auth/react";
+import { Avatar } from "@nextui-org/react";
 // Data
 import data from "../../data/portfolio.json";
 
@@ -14,22 +13,12 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
   const router = useRouter();
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  //const session = useSession();
   const { name, showBlog, showResume } = data;
 
   useEffect(() => {
     setMounted(true);
     setTheme("dark");
   }, []);
-
-  const trySignIn = async () => {
-    const session = await getSession();
-    if (session) {
-      await signOut({ callbackUrl: "/" });
-      return;
-    }
-    await signIn('github', { callbackUrl: "/edit" })
-  }
 
   return (
     <>
@@ -108,7 +97,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
         )}
       </Popover>
       <div
-        className={`mt-10 hidden flex-row items-center justify-between sticky ${theme === "light" && "bg-white"
+        className={`mt-10 hidden pt-2 flex-row items-center justify-between sticky ${theme === "light" && "bg-white"
           } dark:text-white top-0 z-10 tablet:flex`}
       >
         <h1
@@ -119,6 +108,12 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
         </h1>
         {!isBlog ? (
           <div className="flex">
+            <div className="pr-4">
+              <Avatar
+                size={"xl"}
+                src="/avatar.jpg"
+              />
+            </div>
             <Button onClick={handleWorkScroll}>Work</Button>
             <Button onClick={handleAboutScroll}>About</Button>
             {showBlog && (
@@ -145,11 +140,6 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                         onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                       />
                     </div>
-                    <div className="p-1 laptop:p-2 m-1 laptop:m-2 rounded-lg flex items-center transition-all ease-out duration-300 hover:bg-slate-600 text-white hover:scale-105 active:scale-100 tablet:first:ml-0 cursor-pointer">
-                      <LoginIcon
-                        onClick={trySignIn}
-                      />
-                    </div>
                   </React.Fragment> :
                   <React.Fragment>
                     <div className="p-1 laptop:p-2 m-1 laptop:m-2 rounded-lg flex items-center transition-all ease-out duration-300 hover:bg-slate-100 text-white hover:scale-105 active:scale-100 tablet:first:ml-0 cursor-pointer">
@@ -157,11 +147,6 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                         onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                         sx={{ color: "#040D0A" }}
                       />
-                    </div>
-                    <div className="p-1 laptop:p-2 m-1 laptop:m-2 rounded-lg flex items-center transition-all ease-out duration-300 hover:bg-slate-100 text-white hover:scale-105 active:scale-100 tablet:first:ml-0 cursor-pointer">
-                      <LoginIcon
-                        sx={{ color: "#040D0A" }}
-                        onClick={trySignIn} />
                     </div>
                   </React.Fragment>}
               </React.Fragment>

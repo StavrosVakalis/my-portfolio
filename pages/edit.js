@@ -3,27 +3,19 @@ import Button from "../components/Button";
 import Header from "../components/Header";
 import { v4 as uuidv4 } from "uuid";
 import { useTheme } from "next-themes";
-import { useSession } from "next-auth/react";
 
 // Data
 import yourData from "../data/portfolio.json";
 import { useRouter } from "next/router";
 
 const Edit = () => {
-  const { status } = useSession();
-  const router = useRouter();
-  const [isAuthed, setIsAuthed] = useState(false);
   const [data, setData] = useState(yourData);
   const [currentTabs, setCurrentTabs] = useState("HEADER");
+  const isDevelopement = process.env.NODE_ENV === "development";
   const { theme } = useTheme();
 
-  if (!status || status === 'unauthenticated') {
-    router.push("/")
-    return null;
-  }
-
   const saveData = () => {
-    if (process.env.NODE_ENV === "development") {
+    if (isDevelopement) {
       fetch("/api/portfolio", {
         method: "POST",
         headers: {
@@ -347,7 +339,7 @@ const Edit = () => {
                   <div className="mt-10" key={project.id}>
                     <div className="flex items-center justify-between">
                       <h1 className="text-2xl">{project.title}</h1>
-                      {status !== 'authenticated' ?
+                      {!isDevelopement ?
                         <></> :
                         <Button
                           onClick={() => deleteProject(project.id)}
@@ -437,7 +429,7 @@ const Edit = () => {
                   <div key={service.id}>
                     <div className="flex items-center justify-between">
                       <h1 className="text-2xl">{service.title}</h1>
-                      {status !== 'authenticated' ?
+                      {!isDevelopement ?
                         <></> :
                         <Button
                           onClick={() => deleteService(service.id)}
@@ -503,7 +495,7 @@ const Edit = () => {
                   <div key={social.id}>
                     <div className="flex items-center justify-between">
                       <h1 className="text-2xl">{social.title}</h1>
-                      {status !== 'authenticated' ?
+                      {!isDevelopement ?
                         <></> :
                         <Button
                           onClick={() => deleteSocials(social.id)}
@@ -589,7 +581,7 @@ const Edit = () => {
                   <div className="mt-5" key={experiences.id}>
                     <div className="flex items-center justify-between">
                       <h1 className="text-2xl">{experiences.position}</h1>
-                      {status !== 'authenticated' ?
+                      {!isDevelopement ?
                         <></> :
                         <Button
                           onClick={() => deleteProject(project.id)}

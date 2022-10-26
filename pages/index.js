@@ -55,7 +55,7 @@ export default function Home() {
       </Head>
       {status === 'authenticated' && (
         <div className="fixed bottom-5 right-5">
-          <Link href="/edit">
+          <Link legacyBehavior href="/edit">
             <Button type="primary">Edit Data</Button>
           </Link>
         </div>

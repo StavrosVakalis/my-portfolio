@@ -24,8 +24,10 @@ const Footer = ({ }) => {
       </div>
       <h1 className="text-sm text-bold mt-2 laptop:mt-10 p-2 laptop:p-0">
         Made by
-        <Link href="https://github.com/aleksandrostsiouris">
-          <a className="underline underline-offset-1" target="_target">
+        <Link legacyBehavior href="https://github.com/aleksandrostsiouris">
+          <a
+            className="underline underline-offset-1"
+            target="_target">
             <span> </span>Alexandros Tsiouris
           </a>
         </Link>
