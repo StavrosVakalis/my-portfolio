@@ -1,9 +1,7 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Header from "../components/Header";
 import ServiceCard from "../components/ServiceCard";
 import Socials from "../components/Socials";
-import WorkCard from "../components/WorkCard";
-import { useIsomorphicLayoutEffect } from "../utils";
 import { stagger } from "../animations";
 import Footer from "../components/Footer";
 import Head from "next/head";
@@ -11,17 +9,35 @@ import Link from "next/link";
 import Button from "../components/Button/index";
 // Data
 import data from "../data/portfolio.json";
-import { useSession, getSession } from "next-auth/react";
+import { ISOToDate, useIsomorphicLayoutEffect } from "../utils/";
+import { getAllPosts } from "../utils/api";
 
-export default function Home() {
-  // Ref
+export async function getStaticProps() {
+  const posts = getAllPosts([
+    "slug",
+    "title",
+    "image",
+    "preview",
+    "author",
+    "date",
+  ]);
+
+  return {
+    props: {
+      posts: [...posts],
+    },
+  };
+}
+export default function Home({ posts }) {
   const workRef = useRef();
   const aboutRef = useRef();
   const textOne = useRef();
   const textTwo = useRef();
   const textThree = useRef();
   const textFour = useRef();
-  const { status } = useSession();
+  const text = useRef();
+  const [mounted, setMounted] = useState(false);
+
 
   // Handling Scroll
   const handleWorkScroll = () => {
@@ -42,10 +58,14 @@ export default function Home() {
 
   useIsomorphicLayoutEffect(() => {
     stagger(
-      [textOne.current, textTwo.current, textThree.current, textFour.current],
+      [text.current],
       { y: 40, x: -10, transform: "scale(0.95) skew(10deg)" },
       { y: 0, x: 0, transform: "scale(1)" }
     );
+  }, []);
+
+  useEffect(() => {
+    setMounted(true);
   }, []);
 
   return (
@@ -53,13 +73,11 @@ export default function Home() {
       <Head>
         <title>{data.name}</title>
       </Head>
-      {status === 'authenticated' && (
-        <div className="fixed bottom-5 right-5">
-          <Link legacyBehavior href="/edit">
-            <Button type="primary">Edit Data</Button>
-          </Link>
-        </div>
-      )}
+      <div className="fixed bottom-5 right-5">
+        <Link legacyBehavior href="/edit">
+          <Button type="primary">Edit Data</Button>
+        </Link>
+      </div>
       <div className="gradient-circle"></div>
       <div className="gradient-circle-bottom"></div>
 
@@ -98,7 +116,7 @@ export default function Home() {
 
           <Socials className="mt-2 laptop:mt-5" />
         </div>
-        <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={workRef}>
+        {/* <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={workRef}>
           <h1 className="text-2xl text-bold">Work.</h1>
           <div className="mt-5 laptop:mt-10 grid grid-cols-1 tablet:grid-cols-2 gap-4">
             {data.projects.map((project) => (
@@ -110,7 +128,54 @@ export default function Home() {
               />
             ))}
           </div>
-        </div>
+        </div> */}
+
+        <>
+          <div className="container mx-auto mb-10">
+            <div className="mt-10">
+              <h1
+                ref={text}
+                className="tablet:m-10 text-2xl text-bold"
+              >
+                Research Projects.
+              </h1>
+              <div className="mt-10 grid grid-cols-1 mob:grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 justify-between gap-10">
+                {posts &&
+                  posts.map((post, idx) => {
+                    if (idx > 2) return
+                    return (
+                      <div
+                        className="cursor-pointer relative"
+                        key={post.slug}
+                        onClick={() => Router.push(`/blog/${post.slug}`)}
+                      >
+                        <img
+                          className="w-full h-60 rounded-lg shadow-lg object-cover"
+                          src={post.image}
+                          alt={post.title}
+                        ></img>
+                        <h2 className="mt-5 text-4xl">{post.title}</h2>
+                        <p className="mt-2 opacity-50 text-lg">{post.preview}</p>
+                        <span className="text-sm mt-5 opacity-25">
+                          {ISOToDate(post.date)}
+                        </span>
+                      </div>
+                    )
+                  })}
+              </div>
+            </div>
+          </div>
+          {process.env.NODE_ENV === "development" && mounted && (
+            <div className="fixed bottom-6 right-6">
+              {process.env.NODE_ENV === "development" ?
+                <></> :
+                <Button onClick={createBlog} type={"primary"}>
+                  Add New Post +{" "}
+                </Button>}
+            </div>
+          )}
+        </>
+
         <div className="mt-10 laptop:mt-30 p-2 laptop:p-0">
           <h1 className="tablet:m-10 text-2xl text-bold">Experience.</h1>
           <div className="mt-5 tablet:m-10 grid grid-cols-1 laptop:grid-cols-2 gap-6">
