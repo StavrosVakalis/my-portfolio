@@ -23,7 +23,7 @@ const BlogPost = ({ post }) => {
   return (
     <>
       <Head>
-        <title>{"Blog - " + post.title}</title>
+        <title>{"Research - " + post.title}</title>
         <meta name="description" content={post.preview} />
       </Head>
       <div className="container mx-auto mt-10">
@@ -52,7 +52,7 @@ const BlogPost = ({ post }) => {
       {process.env.NODE_ENV === "development" && (
         <div className="fixed bottom-6 right-6">
           <Button onClick={() => setShowEditor(true)} type={"primary"}>
-            Edit this blog
+            Edit this research
           </Button>
         </div>
       )}
