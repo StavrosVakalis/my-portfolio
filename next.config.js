@@ -2,9 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   // crossOrigin: 'use-credentials',
-  env: {
-    NEXTAUTH_URL: process.env.NEXTAUTH_URL
-  }
+  assetPrefix: process.env.NODE_ENV !== 'development' ?
+    "/my-portfolio" : "/"
 }
 
 module.exports = nextConfig
