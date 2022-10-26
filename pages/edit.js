@@ -6,13 +6,20 @@ import { useTheme } from "next-themes";
 
 // Data
 import yourData from "../data/portfolio.json";
-import { useRouter } from "next/router";
+import { Router, useRouter } from "next/router";
 
 const Edit = () => {
   const [data, setData] = useState(yourData);
   const [currentTabs, setCurrentTabs] = useState("HEADER");
   const isDevelopement = process.env.NODE_ENV === "development";
   const { theme } = useTheme();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (process.env.NODE_ENV !== 'development') {
+      router.push("/");
+    }
+  }, [router])
 
   const saveData = () => {
     if (isDevelopement) {
