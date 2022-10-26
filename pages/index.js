@@ -73,11 +73,15 @@ export default function Home({ posts }) {
       <Head>
         <title>{data.name}</title>
       </Head>
-      <div className="fixed bottom-5 right-5">
-        <Link legacyBehavior href="/edit">
-          <Button type="primary">Edit Data</Button>
-        </Link>
-      </div>
+      {
+        process.env.NODE_ENV === 'development' ?
+          <div className="fixed bottom-5 right-5">
+            <Link legacyBehavior href="/edit">
+              <Button type="primary">Edit Data</Button>
+            </Link>
+          </div> :
+          <></>
+      }
       <div className="gradient-circle"></div>
       <div className="gradient-circle-bottom"></div>
 
@@ -116,20 +120,7 @@ export default function Home({ posts }) {
 
           <Socials className="mt-2 laptop:mt-5" />
         </div>
-        {/* <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={workRef}>
-          <h1 className="text-2xl text-bold">Work.</h1>
-          <div className="mt-5 laptop:mt-10 grid grid-cols-1 tablet:grid-cols-2 gap-4">
-            {data.projects.map((project) => (
-              <WorkCard
-                key={project.id}
-                img={project.imageSrc}
-                name={project.title}
-                description={project.description}
-              />
-            ))}
-          </div>
-        </div> */}
-
+        {/* Research section */}
         <>
           <div className="container mx-auto mb-10">
             <div className="mt-10">
@@ -175,7 +166,6 @@ export default function Home({ posts }) {
             </div>
           )}
         </>
-
         <div className="mt-10 laptop:mt-30 p-2 laptop:p-0">
           <h1 className="tablet:m-10 text-2xl text-bold">Experience.</h1>
           <div className="mt-5 tablet:m-10 grid grid-cols-1 laptop:grid-cols-2 gap-6">
