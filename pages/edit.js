@@ -3,14 +3,14 @@ import Button from "../components/Button";
 import Header from "../components/Header";
 import { v4 as uuidv4 } from "uuid";
 import { useTheme } from "next-themes";
-import { useSession } from "next-auth/react";
+import { useSession } from "next-auth";
 
 // Data
 import yourData from "../data/portfolio.json";
 import { useRouter } from "next/router";
 
 const Edit = () => {
-  const session = useSession({ required: true });
+  const session = useSession();
   const router = useRouter();
   const [isAuthed, setIsAuthed] = useState(false);
   const [data, setData] = useState(yourData);
