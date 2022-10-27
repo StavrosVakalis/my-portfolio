@@ -74,7 +74,7 @@ const Resume = () => {
                       <h3 className="text-sm opacity-75">
                         {x.universityDate}
                       </h3>
-                      {x.universityPara.split("|").length > 0 ?
+                      {x.universityPara && x.universityPara.length > 0 && x.universityPara.split("|").length > 0 ?
                         x.universityPara.split("|").map((s, idx) => {
                           return (<p className="text-sm opacity-50" key={idx}>
                             {s}
