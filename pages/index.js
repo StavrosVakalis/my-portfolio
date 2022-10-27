@@ -138,7 +138,7 @@ export default function Home({ posts }) {
                       <div
                         className="cursor-pointer relative"
                         key={post.slug}
-                        onClick={() => Router.push(`/blog/${post.slug}`)}
+                        onClick={() => Router.push(`/research/${post.slug}`)}
                       >
                         <img
                           className="w-full h-60 rounded-lg shadow-lg object-cover"
