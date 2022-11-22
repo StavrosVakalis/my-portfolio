@@ -75,13 +75,13 @@ const Resume = () => {
                         x.universityName.split("|").map((u, idx) => {
                           if (idx === 1) {
                             return (
-                              <h2 key={id} className="text-m font-semibold">
+                              <h2 key={id} className="text-m">
                                 {u}
                               </h2>
                             );
                           }
                           return (
-                            <h2 key={id} className="text-lg">
+                            <h2 key={id} className="text-lg font-semibold">
                               {u}
                             </h2>
                           );
