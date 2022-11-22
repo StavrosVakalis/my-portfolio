@@ -1,9 +1,9 @@
 {
     "name": "",
-    "headerTaglineOne": "Hello 👋, I'm Stavros Vakalis",
-    "headerTaglineTwo": "I'm an assistant professor 🎓 University of South Florida at the Electrical Engineering Department",
+    "headerTaglineOne": "Stavros Vakalis.",
+    "headerTaglineTwo": "",
     "showBlog": true,
-    "darkMode": true,
+    "darkMode": false,
     "showResume": true,
     "socials": [
         {
@@ -74,7 +74,7 @@
     ],
     "aboutpara": "Stavros Vakalis is an assistant professor with the Department of Electrical Engineering, University of South Florida. He received the PhD and MSc degrees from Michigan State University, MI, USA and the Diploma degree in Electrical and Computer Engineering from National Technical University of Athens, Greece. He is the recipient of multiple international fellowships and awards and first and second place in student paper competitions. His research interests include applied electromagnetics with an emphasis on wireless millimeter-wave systems for imaging, radar, sensing, and communications.",
     "resume": {
-        "tagline": "👋  My name is Stavros Vakalis",
+        "tagline": "Stavros Vakalis.",
         "description": "I'm an assistant professor with the Department of Electrical Engineering, University of South Florida. I've received the PhD and MSc degrees from Michigan State University, MI, USA and the Diploma degree in Electrical and Computer Engineering from National Technical University of Athens, Greece. I'm a recipient of multiple international fellowships and awards and first and second place in student paper competitions. My research interests include applied electromagnetics with an emphasis on wireless millimeter-wave systems for imaging, radar, sensing, and communications.",
         "experiences": [
             {
@@ -104,15 +104,15 @@
         ],
         "education": [
             {
-                "universityName": "Michigan State University",
+                "universityName": "Doctor of Philosophy in Electrical Engineering | Michigan State University",
                 "universityDate": "August 2017 - August 2022"
             },
             {
-                "universityName": "Michigan State University",
+                "universityName": "Master of Science in Electrical and Computer Engineering | Michigan State University ",
                 "universityDate": "August 2017 - May 2020"
             },
             {
-                "universityName": "National Technical University of Athens, Greece",
+                "universityName": "Diploma in Electrical and Computer Engineering | National Technical University of Athens, Greece",
                 "universityDate": "August 2012 - July 2017"
             }
         ],

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useId } from "react";
 import { useRouter } from "next/router";
 import Header from "../components/Header";
 import ProjectResume from "../components/ProjectResume";
@@ -15,6 +15,7 @@ const Resume = () => {
   const theme = useTheme();
   const [mount, setMount] = useState(false);
   const { status } = useSession();
+  const id = useId();
 
   useEffect(() => {
     setMount(true);
@@ -39,7 +40,7 @@ const Resume = () => {
         {mount && (
           <div className="mt-10 w-full flex flex-col items-center">
             <div
-              className={`w-full ${mount && theme.theme === "dark" ? "bg-gray-900" : "bg-gray-100"
+              className={`w-full ${mount && theme.theme === "dark" ? "bg-gray-900" : "bg-slate-200"
                 } max-w-4xl p-20 mob:p-5 desktop:p-20 rounded-lg shadow-sm`}
             >
               <h1 className="text-3xl font-bold">{name}</h1>
@@ -70,7 +71,23 @@ const Resume = () => {
                 {resume.education && resume.education.map(x => {
                   return (
                     <div className="mt-2" key={`${x.universityName}-${x.universityDate}`}>
-                      <h2 className="text-lg">{x.universityName}</h2>
+                      {
+                        x.universityName.split("|").map((u, idx) => {
+                          if (idx === 1) {
+                            return (
+                              <h2 key={id} className="text-m font-semibold">
+                                {u}
+                              </h2>
+                            );
+                          }
+                          return (
+                            <h2 key={id} className="text-lg">
+                              {u}
+                            </h2>
+                          );
+                        })
+                      }
+                      {/* <h2 className="text-lg">{x.universityName}</h2> */}
                       <h3 className="text-sm opacity-75">
                         {x.universityDate}
                       </h3>

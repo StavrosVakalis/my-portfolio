@@ -3,8 +3,8 @@ import { useTheme } from "next-themes";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import Button from "../Button";
-import Brightness7Rounded from '@mui/icons-material/Brightness7Rounded'
-import Brightness2Icon from '@mui/icons-material/Brightness2';
+// import Brightness7Rounded from '@mui/icons-material/Brightness7Rounded'
+// import Brightness2Icon from '@mui/icons-material/Brightness2';
 import { Avatar } from "@nextui-org/react";
 // Data
 import data from "../../data/portfolio.json";
@@ -17,7 +17,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
 
   useEffect(() => {
     setMounted(true);
-    setTheme("dark");
+    setTheme("light");
   }, []);
 
   return (
@@ -34,11 +34,11 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
               </h1>
 
               <div className="flex items-center">
-                {data.darkMode && (
+                {/* {data.darkMode && (
                   <div className="p-1 laptop:p-2 m-1 laptop:m-2 rounded-lg flex items-center transition-all ease-out duration-300 hover:bg-slate-600 text-white hover:scale-105 active:scale-100  tablet:first:ml-0 cursor-pointer">
                     <Brightness7Rounded onClick={() => setTheme(theme === "dark" ? "light" : "dark")} />
                   </div>
-                )}
+                )} */}
               </div>
             </div>
             <Popover.Panel
@@ -47,7 +47,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
             >
               {!isBlog ? (
                 <div className="grid grid-cols-1">
-                  <Button onClick={handleWorkScroll}>Work</Button>
+                  {/* <Button onClick={handleWorkScroll}>Work</Button> */}
                   <Button onClick={handleAboutScroll}>About</Button>
                   {showBlog && (
                     <Button onClick={() => router.push("/research")}>Research</Button>
@@ -114,7 +114,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                 src="/avatar.jpg"
               />
             </div>
-            <Button onClick={handleWorkScroll}>Work</Button>
+            {/* <Button onClick={handleWorkScroll}>Work</Button> */}
             <Button onClick={handleAboutScroll}>About</Button>
             {showBlog && (
               <Button onClick={() => router.push("/research")}>Research</Button>
@@ -131,7 +131,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
             <Button onClick={() => window.open("mailto:vakalis@usf.edu")}>
               Contact
             </Button>
-            {mounted && theme && data.darkMode && (
+            {/* {mounted && theme && data.darkMode && (
               <React.Fragment>
                 {theme === "dark" ?
                   <React.Fragment>
@@ -150,7 +150,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                     </div>
                   </React.Fragment>}
               </React.Fragment>
-            )}
+            )} */}
           </div>
         ) : (
           <div className="flex">
@@ -171,7 +171,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
               Contact
             </Button>
 
-            {theme === "dark" ?
+            {/* {theme === "dark" ?
               <div className="p-1 laptop:p-2 m-1 laptop:m-2 rounded-lg flex items-center transition-all ease-out duration-300 hover:bg-slate-600 text-white hover:scale-105 active:scale-100 tablet:first:ml-0 cursor-pointer">
                 <Brightness7Rounded
                   onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
@@ -183,7 +183,7 @@ const Header = ({ handleWorkScroll, handleAboutScroll, isBlog }) => {
                   sx={{ color: "#040D0A" }}
                 />
               </div>
-            }
+            } */}
           </div>
         )}
       </div>
