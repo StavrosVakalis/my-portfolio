@@ -9,7 +9,7 @@
 }
 
 html{
-  @apply cursor-default scrollbar-hide ;
+  @apply cursor-default scrollbar-hide bg-[#f5f5f5];
 }
 
 body {
