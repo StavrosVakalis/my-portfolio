@@ -7,7 +7,7 @@ import Button from "../../components/Button";
 import Header from "../../components/Header";
 import data from "../../data/portfolio.json";
 import { ISOToDate, useIsomorphicLayoutEffect } from "../../utils";
-import { getAllPosts } from "../../utils/api";
+import { getAllRecords } from "../../utils/api";
 
 const Blog = ({ posts }) => {
   const showBlog = useRef(data.showBlog);
@@ -130,7 +130,7 @@ const Blog = ({ posts }) => {
 };
 
 export async function getStaticProps() {
-  const posts = getAllPosts([
+  const posts = getAllRecords("posts", [
     "slug",
     "title",
     "image",

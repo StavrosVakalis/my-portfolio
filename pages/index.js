@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import Header from "../components/Header";
-import ServiceCard from "../components/ServiceCard";
+// import ServiceCard from "../components/ServiceCard";
 import Socials from "../components/Socials";
 import { stagger } from "../animations";
 import Footer from "../components/Footer";
@@ -10,25 +10,52 @@ import Button from "../components/Button/index";
 // Data
 import data from "../data/portfolio.json";
 import { ISOToDate, useIsomorphicLayoutEffect } from "../utils/";
-import { getAllPosts } from "../utils/api";
+import { getAllRecords } from "../utils/api";
+import { useRouter } from "next/router";
 
 export async function getStaticProps() {
-  const posts = getAllPosts([
-    "slug",
-    "title",
-    "image",
-    "preview",
-    "author",
-    "date",
-  ]);
+  const posts = getAllRecords(
+    "posts"
+    , [
+      "slug",
+      "title",
+      "image",
+      "preview",
+      "author",
+      "date",
+    ]);
+
+  const awards = getAllRecords(
+    "awards"
+    , [
+      "slug",
+      "title",
+      "image",
+      "preview",
+      "author",
+      "date",
+    ]);
+
+  const publications = getAllRecords(
+    "publications"
+    , [
+      "slug",
+      "title",
+      "image",
+      "preview",
+      "author",
+      "date",
+    ]);
 
   return {
     props: {
       posts: [...posts],
+      awards: [...awards],
+      publications: [...publications]
     },
   };
 }
-export default function Home({ posts }) {
+export default function Home({ posts, awards, publications }) {
   // const workRef = useRef();
   const aboutRef = useRef();
   const textOne = useRef();
@@ -37,6 +64,7 @@ export default function Home({ posts }) {
   const textFour = useRef();
   const text = useRef();
   const [mounted, setMounted] = useState(false);
+  const Router = useRouter();
 
 
   // // Handling Scroll
@@ -85,7 +113,7 @@ export default function Home({ posts }) {
       <div className="gradient-circle"></div>
       <div className="gradient-circle-bottom"></div>
 
-      <div className="container mx-auto mb-10 ">
+      <div className="container mx-auto mb-10">
         <Header
           // handleWorkScroll={handleWorkScroll}
           handleAboutScroll={handleAboutScroll}
@@ -98,31 +126,31 @@ export default function Home({ posts }) {
             >
               {data.headerTaglineOne}
             </h1>
-            <h1
-              ref={textTwo}
-              className="text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl p-1 tablet:p-2 text-bold w-full laptop:w-4/5 select-none"
-            >
-              {data.headerTaglineTwo}
-            </h1>
-            <h1
-              ref={textThree}
-              className="text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl p-1 tablet:p-2 text-bold w-full laptop:w-4/5 select-none"
-            >
-              {data.headerTaglineThree}
-            </h1>
-            <h1
-              ref={textFour}
-              className="text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl p-1 tablet:p-2 text-bold w-full laptop:w-4/5 select-none"
-            >
-              {data.headerTaglineFour}
-            </h1>
+            {data.headerTaglineTwo ?
+              <h1
+                ref={textTwo}
+                className="text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl p-1 tablet:p-2 text-bold w-full laptop:w-4/5 select-none"
+              >
+                {data.headerTaglineTwo}
+              </h1> :
+              <></>
+            }
           </div>
 
           <Socials className="mt-2 laptop:mt-5" />
         </div>
+
+
+        <div className="mt-10 laptop:mt-20 p-2 laptop:p-0" ref={aboutRef}>
+          <h1 className="tablet:m-10 text-2xl text-bold">About.</h1>
+          <p className="tablet:m-10 mt-2 text-xl laptop:text-3xl w-full laptop:w-3/5">
+            {data.aboutpara}
+          </p>
+        </div>
+
         {/* Research section */}
         <>
-          <div className="container mx-auto mb-10">
+          <div className="container mx-auto mb-20 mt-20">
             <div className="mt-10">
               <h1
                 ref={text}
@@ -136,7 +164,7 @@ export default function Home({ posts }) {
                     if (idx > 2) return
                     return (
                       <div
-                        className="cursor-pointer relative"
+                        className="cursor-pointer relative hover:scale-95 active:scale-100 transition-all"
                         key={post.slug}
                         onClick={() => Router.push(`/research/${post.slug}`)}
                       >
@@ -166,6 +194,84 @@ export default function Home({ posts }) {
             </div>
           )}
         </>
+
+        {/* Awards section */}
+        <>
+          <div className="container mx-auto mb-20 mt-20">
+            <div className="mt-10">
+              <h1
+                ref={text}
+                className="tablet:m-10 text-2xl text-bold"
+              >
+                Awards Preview.
+              </h1>
+              <div className="mt-10 grid grid-cols-1 mob:grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 justify-between gap-10">
+                {awards &&
+                  awards.map((a, idx) => {
+                    if (idx > 2) return
+                    return (
+                      <div
+                        className="cursor-pointer relative hover:scale-95 active:scale-100 transition-all"
+                        key={a.slug}
+                        onClick={() => Router.push(`/awards/${a.slug}`)}
+                      >
+                        <img
+                          className="w-full h-60 rounded-lg shadow-lg object-cove"
+                          src={a.image}
+                          alt={a.title}
+                        ></img>
+                        <h2 className="mt-5 text-4xl">{a.title}</h2>
+                        <p className="mt-2 opacity-50 text-lg">{a.preview}</p>
+                        <span className="text-sm mt-5 opacity-25">
+                          {ISOToDate(a.date)}
+                        </span>
+                      </div>
+                    )
+                  })}
+              </div>
+            </div>
+          </div>
+        </>
+
+
+        {/* Publications section */}
+        <>
+          <div className="container mx-auto mb-20 mt-20">
+            <div className="mt-10">
+              <h1
+                ref={text}
+                className="tablet:m-10 text-2xl text-bold"
+              >
+                Research Preview.
+              </h1>
+              <div className="mt-10 grid grid-cols-1 mob:grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 justify-between gap-10">
+                {publications &&
+                  publications.map((p, idx) => {
+                    if (idx > 2) return
+                    return (
+                      <div
+                        className="cursor-pointer relative hover:scale-95 active:scale-100 transition-all"
+                        key={p.slug}
+                        onClick={() => Router.push(`/publications/${p.slug}`)}
+                      >
+                        <img
+                          className="w-full h-60 rounded-lg shadow-lg object-cover"
+                          src={p.image}
+                          alt={p.title}
+                        ></img>
+                        <h2 className="mt-5 text-4xl">{p.title}</h2>
+                        <p className="mt-2 opacity-50 text-lg">{p.preview}</p>
+                        <span className="text-sm mt-5 opacity-25">
+                          {ISOToDate(p.date)}
+                        </span>
+                      </div>
+                    )
+                  })}
+              </div>
+            </div>
+          </div>
+        </>
+
         {/* <div className="mt-10 laptop:mt-30 p-2 laptop:p-0">
           <h1 className="tablet:m-10 text-2xl text-bold">Experience.</h1>
           <div className="mt-5 tablet:m-10 grid grid-cols-1 laptop:grid-cols-2 gap-6">
@@ -178,12 +284,7 @@ export default function Home({ posts }) {
             ))}
           </div>
         </div> */}
-        <div className="mt-10 laptop:mt-40 p-2 laptop:p-0" ref={aboutRef}>
-          <h1 className="tablet:m-10 text-2xl text-bold">About.</h1>
-          <p className="tablet:m-10 mt-2 text-xl laptop:text-3xl w-full laptop:w-3/5">
-            {data.aboutpara}
-          </p>
-        </div>
+
         <Footer />
       </div>
     </div>

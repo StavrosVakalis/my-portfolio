@@ -10,7 +10,7 @@ import Button from "../../components/Button";
 import BlogEditor from "../../components/BlogEditor";
 import { useRouter } from "next/router";
 
-const BlogPost = ({ post }) => {
+const Publication = ({ publication }) => {
   const [showEditor, setShowEditor] = useState(false);
   const textOne = useRef();
   const textTwo = useRef();
@@ -23,30 +23,30 @@ const BlogPost = ({ post }) => {
   return (
     <>
       <Head>
-        <title>{"Research - " + post.title}</title>
-        <meta name="description" content={post.preview} />
+        <title>{"Research - " + publication.title}</title>
+        <meta name="description" content={publication.preview} />
       </Head>
       <div className="container mx-auto mt-10">
         <Header isBlog={true} />
         <div className="mt-10 flex flex-col">
           <img
             className="w-full h-96 rounded-lg shadow-lg object-cover"
-            src={post.image}
+            src={publication.image}
           ></img>
           <h1
             ref={textOne}
             className="mt-10 text-4xl mob:text-2xl laptop:text-6xl text-bold"
           >
-            {post.title}
+            {publication.title}
           </h1>
           <h2
             ref={textTwo}
             className="mt-2 text-xl max-w-4xl text-darkgray opacity-50"
           >
-            {post.tagline}
+            {publication.tagline}
           </h2>
         </div>
-        <ContentSection content={post.content}></ContentSection>
+        <ContentSection content={publication.content}></ContentSection>
         <Footer />
       </div>
       {process.env.NODE_ENV === "development" && (
@@ -59,9 +59,9 @@ const BlogPost = ({ post }) => {
 
       {showEditor && (
         <BlogEditor
-          post={post}
+          post={publication}
           close={() => setShowEditor(false)}
-          refresh={() => router.reload(window.location.pathname)}
+          refresh={() => router.reload()}
         />
       )}
     </>
@@ -69,7 +69,7 @@ const BlogPost = ({ post }) => {
 };
 
 export async function getStaticProps({ params }) {
-  const post = getBySlug("posts", params.slug, [
+  const publication = getBySlug("publications", params.slug, [
     "date",
     "slug",
     "preview",
@@ -82,18 +82,18 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
-      post: {
-        ...post,
+      publication: {
+        ...publication,
       },
     },
   };
 }
 
 export async function getStaticPaths() {
-  const posts = getAllRecords("posts", ["slug"]);
+  const publications = getAllRecords("publications", ["slug"]);
 
   return {
-    paths: posts.map((post) => {
+    paths: publications.map((post) => {
       return {
         params: {
           slug: post.slug,
@@ -103,4 +103,4 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
-export default BlogPost;
+export default Publication;

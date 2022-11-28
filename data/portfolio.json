@@ -5,6 +5,8 @@
     "showBlog": true,
     "darkMode": false,
     "showResume": true,
+    "showPublications": true,
+    "showAwards": true,
     "socials": [
         {
             "id": "243f9ac7-cf4b-430b-b985-9305fdc6e935",
