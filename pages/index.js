@@ -196,7 +196,7 @@ export default function Home({ posts, awards, publications }) {
         </>
 
         {/* Awards section */}
-        <>
+        {/* <>
           <div className="container mx-auto mb-20 mt-20">
             <div className="mt-10">
               <h1
@@ -205,7 +205,7 @@ export default function Home({ posts, awards, publications }) {
               >
                 Awards Preview.
               </h1>
-              <div className="mt-10 grid grid-cols-1 mob:grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 justify-between gap-10">
+              <div className="mt-10 grid grid-cols-1 mob:grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-1 justify-between gap-10">
                 {awards &&
                   awards.map((a, idx) => {
                     if (idx > 2) return
@@ -231,11 +231,11 @@ export default function Home({ posts, awards, publications }) {
               </div>
             </div>
           </div>
-        </>
+        </> */}
 
 
         {/* Publications section */}
-        <>
+        {/* <>
           <div className="container mx-auto mb-20 mt-20">
             <div className="mt-10">
               <h1
@@ -270,7 +270,7 @@ export default function Home({ posts, awards, publications }) {
               </div>
             </div>
           </div>
-        </>
+        </> */}
 
         {/* <div className="mt-10 laptop:mt-30 p-2 laptop:p-0">
           <h1 className="tablet:m-10 text-2xl text-bold">Experience.</h1>

@@ -27,7 +27,7 @@ const Publication = ({ publication }) => {
         <meta name="description" content={publication.preview} />
       </Head>
       <div className="container mx-auto mt-10">
-        <Header isBlog={true} />
+        <Header isPublications={true} />
         <div className="mt-10 flex flex-col">
           <img
             className="w-full h-96 rounded-lg shadow-lg object-cover"

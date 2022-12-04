@@ -126,21 +126,21 @@ const Header = ({ handleWorkScroll = undefined, handleAboutScroll = undefined, i
             )}
             {
               showAwards && (
-                <Button onClick={() => router.push("/awards")}>
+                <Button onClick={() => router.push(`/awards/86f4e83d-7e4f-4a2f-99d6-471d52fd6ass`)}>
                   Awards
                 </Button>
               )
             }
             {
               showPublications && (
-                <Button onClick={() => router.push("/publications")}>
+                <Button onClick={() => router.push("/publications/2eabf5e5-8631-46ce-81d7-59c5302088cc")}>
                   Publications
                 </Button>
               )
             }
-            <Button onClick={() => window.open("mailto:vakalis@usf.edu")}>
+            {/* <Button onClick={() => window.open("mailto:vakalis@usf.edu")}>
               Contact
-            </Button>
+            </Button> */}
           </div>
         )}
       </div>

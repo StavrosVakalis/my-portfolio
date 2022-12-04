@@ -9,6 +9,7 @@ import { stagger } from "../../animations";
 import Button from "../../components/Button";
 import BlogEditor from "../../components/BlogEditor";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const BlogPost = ({ post }) => {
   const [showEditor, setShowEditor] = useState(false);
@@ -29,10 +30,13 @@ const BlogPost = ({ post }) => {
       <div className="container mx-auto mt-10">
         <Header isBlog={true} />
         <div className="mt-10 flex flex-col">
-          <img
+          <Image
+            width="500"
+            height="500"
             className="w-full h-96 rounded-lg shadow-lg object-cover"
+            alt={post.image}
             src={post.image}
-          ></img>
+          />
           <h1
             ref={textOne}
             className="mt-10 text-4xl mob:text-2xl laptop:text-6xl text-bold"
